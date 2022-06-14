@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Add Book</title>
+</head>
+<style>
+html,body{
+background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGlicmFyeXxlbnwwfHwwfHw%3D&w=1000&q=80');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+
+</style>
+<body>  
+    <form action="{% url 'addbook' %}" method="post">
+       
+        {% csrf_token %}
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 30px;">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-4">Add Book Details</h2>
+  
+                
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="">Book ID</label>
+                    <input type="text" id="book_id" name="book_id" class="form-control form-control-md" />
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="">Tittle</label>
+                    <input type="text" id="tittle" name="tittle" class="form-control form-control-md" />
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="">Author</label>
+                    <input type="text" id="author" name="author" class="form-control form-control-md" />
+                  </div>
+  
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="">Price</label>
+                    <input type="number" id="price" name="price" class="form-control form-control-md" />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="">Edition</label>
+                    <input type="number" id="edition" name="edition" class="form-control form-control-md" />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="">Publication</label>
+                    <input type="text" id="publication" name="publication" class="form-control form-control-md" />
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <button type="submit"
+                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                  </div> 
+                </form> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

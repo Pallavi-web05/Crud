@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>View Book</title>
+</head>
+<style>
+html,body{
+        background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGlicmFyeXxlbnwwfHwwfHw%3D&w=1000&q=80');
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        }
+
+.card{
+        height: auto;
+        margin-top: 30px;
+        margin-bottom: auto;
+        width: 450px;  
+           
+        }
+
+</style>
+<body>  
+  <form action="{% url 'editbook'   %}" method="post">
+       
+    {% csrf_token %}
+    
+  <div class="col-lg-5">
+    <h4 class="text center alert alert-info">Edit data</h4>
+    <div class="mask d-flex align-items-center h-100 gradient-custom-6">
+      <div class="container">
+            <div class="card" style="border-radius: 30px;">
+              <div class="card-body p-2">
+                <h1 class="text-uppercase text-center mb-4">Edit Books Details</h1>
+                    <br>
+                    <table class="table table-striped table-bordered" style = font-size:22px>
+                        <thead>
+                            <tr>                             
+                                <th scope="col">Tittle</th>    
+                                <th scope="col">Edit</th>       
+                            </tr>
+                        </thead>
+                        {% if user %}
+                        <tbody>
+                            {% for i in user %}
+                          <tr>
+                              <td>"{{i.tittle}}"</td>
+                              <td>
+                                <a href="/editpage/{{ i.id }}" class="edit" data-toggle="modal"><button type="submit" class="btn btn-warning">
+                                <i class="glyphicon glyphicon-pencil"></i> </button> </a>   
+                            </td>
+                          </tr> 
+                          {% endfor %}
+                        {% endif %} 
+                        </tbody>
+                    </table>                                              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    
+
+    <form action="{% url '' id=user.id %}" method="post">
+      {% csrf_token %}
+
+      {% for i in user %}
+      <div class="col-md-7">
+        <h4 class="text center alert alert-info">Update data</h4>
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+          <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center">
+              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style="border-radius: 30px;">
+                  <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-4">Update Book Details</h2> 
+                 
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="">Book ID</label>
+                      <input type="text" id="book_id" name="book_id" class="form-control form-control-md" value="{{ i.book_id }}"/>
+                    </div>
+    
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="">Tittle</label>
+                      <input type="text" id="tittle" name="tittle" class="form-control form-control-md" value="{{ i.tittle }}"/>
+                    </div>
+    
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="">Author</label>
+                      <input type="text" id="author" name="author" class="form-control form-control-md" value="{{ i.author }}"/>
+                    </div>
+    
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="">Price</label>
+                      <input type="number" id="price" name="price" class="form-control form-control-md" value="{{ i.price}}"/>
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="">Edition</label>
+                      <input type="number" id="edition" name="edition" class="form-control form-control-md" value="{{ i.edition }}"/>
+                    </div>
+  
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="">Publication</label>
+                      <input type="text" id="publication" name="publication" class="form-control form-control-md" value="{{ i.publication }}"/>
+                    </div>
+  
+                    <div class="d-flex justify-content-center">
+                      <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Update</button>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+      {% endfor %}
+      </form>
+</body>
+</html>
+
+
